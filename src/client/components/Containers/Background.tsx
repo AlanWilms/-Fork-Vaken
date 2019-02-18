@@ -9,8 +9,10 @@ const Background = styled.div`
 	${displayFlex}
 	width: 100vw;
 	height: 100vh;
-	background: url(${(props: Props) => '/' + props.img}) no-repeat;
+	background: url(${(props: Props) => props.img}) no-repeat;
 	background-size: cover;
 `;
 
 export default Background;
+
+// Copyright (c) 2019 Vanderbilt University

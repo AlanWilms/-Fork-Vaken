@@ -1,14 +1,17 @@
-import koa from 'koa';
 import koaRouter from 'koa-router';
-import { Context } from 'koa';
+import { userModel } from '../models/User';
 
 const passport = require('koa-passport');
 
 const userRouter = new koaRouter();
-const Koa = require('koa');
 
-// const app = new Koa();
-// app.use(passport.initialize());
+// Mongo test
+userRouter.post('/mongo', async (ctx, next) => {
+	const newUser = new userModel(ctx.request.query);
+	await newUser.save();
+	const user = await userModel.findOne({ firstName: 'vandy' });
+	console.log(user);
+});
 
 userRouter.post('/api/login', async ctx => {
 	// Dummy logging for now; TODO - flesh out this functionality
@@ -18,33 +21,39 @@ userRouter.post('/api/login', async ctx => {
 
 userRouter.get(
 	'/api/auth/google',
-	passport.authenticate('google', { scope: ['profile'], display: 'popup' }),
+	passport.authenticate('google', { scope: ['openid', 'profile', 'email'], display: 'popup' }),
 	ctx => {
-		console.log('inside /api/auth/google ');
+		console.log('inside /api/auth/google');
 	}
 );
 
 userRouter.get('/api/auth/google/callback', async ctx => {
 	return passport.authenticate('google', (err: any, user: any, info: any, status: any) => {
+		// console.log(ctx);
+		console.log('> User:');
+		console.log(user);
 		ctx.redirect('/');
-		console.log(ctx, err, user, info, status);
 	})(ctx);
 });
 
-// (ctx: Context, next: any)
+userRouter.get(
+	'/api/auth/github',
+	passport.authenticate('github', { scope: ['user:email'] }),
+	ctx => {
+		console.log('inside /api/auth/github');
+	}
+);
 
-// (ctx: any) => {
-// 	console.log('inside /api/auth/google/callback');
-// 	const user = {
-// 		name: ctx.params.user.displayName,
-// 	};
-// 	console.log('name: ' + user.name);
-// })
-
-// userRouter
-//   .get('/', (ctx, next) => {
-//     ctx.body = 'Hello World!';
-//   })
+userRouter.get('/api/auth/github/callback', async ctx => {
+	return passport.authenticate('github', (err: any, user: any, info: any, status: any) => {
+		// console.log(ctx, err, user, info, status);
+		console.log('> User:');
+		console.log(user);
+		ctx.redirect('/');
+	})(ctx);
+});
 
 // app.use(userRouter.routes()).use(userRouter.allowedMethods());
 export default userRouter;
+
+// Copyright (c) 2019 Vanderbilt University

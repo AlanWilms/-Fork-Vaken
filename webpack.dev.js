@@ -12,6 +12,7 @@ module.exports = merge.smart(common, {
 		open: true, // Open browser on 'npm start'
 		quiet: true, // Pretty console output
 		port: 8081,
+		historyApiFallback: true,
 		proxy: {
 			'/api': {
 				target: 'http://localhost:8080',
@@ -41,3 +42,5 @@ module.exports = merge.smart(common, {
 		new FriendlyErrorsPlugin(), // Pretty console output
 	],
 });
+
+// Copyright (c) 2019 Vanderbilt University

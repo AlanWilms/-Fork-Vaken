@@ -16,6 +16,12 @@ class User extends Typegoose {
 	@prop({ required: true })
 	email: string = '';
 
+	@prop({ unique: true })
+	google?: string;
+
+	@prop({ unique: true })
+	github?: string;
+
 	@prop()
 	phoneNumber?: string;
 
@@ -32,3 +38,5 @@ class User extends Typegoose {
 const userModel = new User().getModelForClass(User);
 
 export { User, userModel };
+
+// Copyright (c) 2019 Vanderbilt University

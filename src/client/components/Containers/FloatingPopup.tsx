@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { displayFlex } from './FlexContainers';
+import { FlexStartColumn, ContainerProps as Props } from './FlexContainers';
 
-const FloatingPopup = styled.main`
-	${displayFlex}
-	justify-content: flex-start;
+const FloatingPopup = styled(FlexStartColumn)`
 	transition: ease-in-out all 1s;
-	background-color: rgba(247, 245, 249, 0.9);
-	width: 30rem;
-	height: 28rem;
+	background-color: rgba(247, 245, 249, ${(props: Props) => props.backgroundOpacity});
 	border-radius: 2rem;
-	padding: 0rem;
+	padding: ${(props: Props) => props.padding || '0rem'};
+	margin-bottom: ${(props: Props) => props.marginBottom || 0};
+	/* height: min-content; */
 `;
 
 export default FloatingPopup;
+
+// Copyright (c) 2019 Vanderbilt University

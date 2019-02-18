@@ -25,7 +25,7 @@ const TextInputStyles = styled.input`
 
 	&:focus {
 		outline: none;
-		border: 4px solid red;
+		border: none;
 	}
 `;
 
@@ -35,3 +35,5 @@ const TextInput = (props: Props): JSX.Element => {
 
 export default TextInput;
 export { TextInputStyles };
+
+// Copyright (c) 2019 Vanderbilt University
