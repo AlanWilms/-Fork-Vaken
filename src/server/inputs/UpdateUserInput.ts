@@ -1,5 +1,5 @@
 import { Field, InputType } from 'type-graphql';
-import User from '../data/User';
+import { User } from '../data/User';
 import AuthLevel from '../enums/AuthLevel';
 import Gender from '../enums/Gender';
 import ShirtSize from '../enums/ShirtSize';

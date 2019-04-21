@@ -1,5 +1,5 @@
 import { Field, InputType } from 'type-graphql';
-import Hacker from '../data/Hacker';
+import { Hacker } from '../data/Hacker';
 import Status from '../enums/Status';
 import Ethnicity from '../enums/Ethnicity';
 import Race from '../enums/Race';

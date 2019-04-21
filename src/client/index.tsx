@@ -37,7 +37,7 @@ const Vaken: React.FunctionComponent = (): JSX.Element => {
 
 	// Uncomment to add dummy data
 	// useEffect(() => {
-	// addHackers(true);
+	// 	addHackers(true);
 	// }, []);
 
 	useEffect(() => {

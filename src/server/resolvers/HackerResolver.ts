@@ -1,13 +1,12 @@
 import { Resolver, Query, Arg, Mutation } from 'type-graphql';
 import { plainToClass } from 'class-transformer';
 
-import Hacker from '../data/Hacker';
+import { User, UserModel } from '../data/User';
+import { Hacker, HackerModel } from '../data/Hacker';
 import HackerGenders from '../data/HackerGenders';
 import HackerShirtSizes from '../data/HackerShirtSizes';
 import HackerStatuses from '../data/HackerStatuses';
 import SchoolCounts from '../data/SchoolCounts';
-import { HackerModel } from '../models/Hacker';
-import { User, UserModel } from '../models/User';
 import AuthLevel from '../enums/AuthLevel';
 import Status from '../enums/Status';
 import UpdateHackerInput from '../inputs/UpdateHackerInput';
