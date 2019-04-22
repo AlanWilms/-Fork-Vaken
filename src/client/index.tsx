@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
-const client = new ApolloClient({ uri: 'http://localhost:8080/graphql' });
+const client = new ApolloClient({ uri: '/graphql' });
 
 const Vaken: React.FunctionComponent = (): JSX.Element => {
 	const [loggedIn, setLoggedIn] = useState();
